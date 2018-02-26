@@ -1,0 +1,4 @@
+config.json
+state.json
+__pycache__
+*.egg-info
