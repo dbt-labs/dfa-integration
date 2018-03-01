@@ -1,0 +1,14 @@
+{
+    "refresh_token": "",
+    "client_id": "",
+    "client_secret": "",
+    "s3_bucket": "",
+    "user_agent": "DFA Integration <your-email-here>",
+    "reports": [
+        {
+            "profile_id": 0,
+            "report_id": 0,
+            "cron": "0 0 * * *"
+        }
+    ]
+}

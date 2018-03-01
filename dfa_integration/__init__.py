@@ -5,7 +5,8 @@ from datetime import datetime
 from dfa_integration.api import APIClient
 from dfa_integration.config import load_config
 from dfa_integration.s3 import S3Client
-from dfa_integration.state import incorporate, save_state, load_state
+from dfa_integration.state import incorporate, save_state, load_state, \
+    should_rerun_report
 
 from dfa_integration.logger import GLOBAL_LOGGER as logger
 
@@ -20,6 +21,10 @@ def do_sync(args):
     for report in config.get('reports'):
         profile_id = report.get('profile_id')
         report_id = report.get('report_id')
+
+        if not should_rerun_report(report, state, profile_id, report_id):
+            logger.info('Skipping report, last run was too recent.')
+            continue
 
         file_id, data = dfa_client.get_report(profile_id, report_id)
 

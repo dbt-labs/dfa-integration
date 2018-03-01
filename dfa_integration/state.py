@@ -1,9 +1,37 @@
 import json
 import os.path
 
+from croniter import croniter
+from datetime import datetime
 from dateutil.parser import parse
 
 from dfa_integration.logger import GLOBAL_LOGGER as logger
+
+
+def should_rerun_report(report, state, profile_id, report_id):
+    last_run = get_last_record_value_for_report(state, profile_id, report_id)
+
+    cron = report.get('cron')
+
+    if cron is None:
+        logger.warn(('No cron entry for report {} on profile '
+                     '{}, running!')
+                    .format(report_id, profile_id))
+        return True
+
+    try:
+        date_iterator = croniter(cron, last_run)
+
+    except:
+        logger.warn(('Invalid cron syntax for report {} on '
+                     'profile {}! Please double check the '
+                     'config file and try again.')
+                    .format(report_id, profile_id))
+
+    if date_iterator.get_next(datetime) < datetime.now():
+        return True
+
+    return False
 
 
 def get_last_record_value_for_report(state, profile_id, report_id):
