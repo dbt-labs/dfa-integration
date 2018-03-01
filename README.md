@@ -26,7 +26,7 @@ There is a template you can use at `config.json.example`, just copy it to `confi
 
 You'll need to specify a list of reports to run. Each report can optionally have a cron snippet defining how often it will try to run (although it can only run as often as you invoke the integration!)
 
-. Run it!
+Run it!
 
 ```bash
 dfa-integration -c config.json -s state.json
