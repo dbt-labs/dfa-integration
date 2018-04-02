@@ -4,7 +4,7 @@ boto3==1.5.30
 botocore==1.8.44
 certifi==2018.1.18
 chardet==3.0.4
-dfa-integration==0.0.1
+croniter==0.3.20
 docutils==0.14
 future==0.16.0
 google-api-python-client==1.6.5
