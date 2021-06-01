@@ -39,7 +39,7 @@ setup(name='dfa-integration',
           'six==1.11.0',
           'Unidecode==1.0.22',
           'uritemplate==3.0.0',
-          'urllib3==1.22'
+          'urllib3==1.26.5'
       ],
       entry_points='''
           [console_scripts]

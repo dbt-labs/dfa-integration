@@ -27,4 +27,4 @@ s3transfer==0.1.13
 six==1.11.0
 Unidecode==1.0.22
 uritemplate==3.0.0
-urllib3==1.22
+urllib3==1.26.5
